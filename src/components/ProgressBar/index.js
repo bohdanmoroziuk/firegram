@@ -1,14 +1,18 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import 'components/ProgressBar/index.css';
 
 const ProgressBar = ({ progress }) => {
 
   return (
-    <div 
+    <motion.div 
       className="progress-bar"
-      style={{
+      initial={{
+        width: 0
+      }}
+      animate={{
         width: `${progress}%`
-      }}  
+      }}
     />
   );
 };
