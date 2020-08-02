@@ -3,32 +3,24 @@ import { motion } from 'framer-motion';
 import 'components/Modal/index.css';
 
 const Modal = ({ image, unselectImage }) => {
+  const baseClassOfComponent = 'backdrop';
+
   const handleBackdropClick = ({ target }) => {
-    if (target.classList.contains('backdrop')) {
-      unselectImage();
-    }
+    target.classList.contains(baseClassOfComponent) && unselectImage();
   };
 
   return (
     <motion.div 
-      className="backdrop"
+      className={`${baseClassOfComponent}`}
       onClick={handleBackdropClick}  
-      initial={{
-        opacity: 0
-      }}
-      animate={{
-        opacity: 1
-      }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
     >
       <motion.img 
         src={image} 
         alt="" 
-        initial={{
-          y: `-100vh`
-        }}  
-        animate={{
-          y: 0
-        }}
+        initial={{ y: `-100vh` }}  
+        animate={{ y: 0 }}
       />
     </motion.div>
   );
